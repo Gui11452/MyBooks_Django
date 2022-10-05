@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% include 'parciais/_head.html' %}
+
+{% block 'estilos_css' %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/novo_livro/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/novo_livro/mediaqueries1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/novo_livro/mediaqueries2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/novo_livro/mediaqueries3.css' %}">
+{% endblock 'estilos_css' %}
+
+{% block 'titulo' %} Editando Livro {% endblock %}
+    
+{% block 'container' %} 
+
+    <section id="container">
+
+        <div>
+
+            <div>
+
+                <div id="login1">
+                    <div>
+                        <h1> 
+                            Editando Livro!
+                            <i class="fa-solid fa-face-smile-wink"></i>
+                        </h1>
+                    </div>
+
+                    <img src="{% static 'Imagens/login2.png' %}" alt="">
+                </div>
+
+                <div id="login2">
+                    <h1> 
+                        Editar Livro
+                        <i class="fa-solid fa-face-grin-stars"></i>
+                    </h1>
+
+                    {% block 'alertas' %} 
+                        {% include 'parciais/_messages.html' %}
+                    {% endblock %}
+                    
+                    <div>
+                        <form action="{% url 'editar_livro' livro.id %}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+
+                            <input id="botao" type="submit" value="Editar">
+                            
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+        
+{% endblock %}
+

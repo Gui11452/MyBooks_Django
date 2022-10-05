@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% include 'parciais/_head.html' %}
+
+{% block 'estilos_css' %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detalhes/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/detalhes/mediaqueries1.css' %}">
+{% endblock 'estilos_css' %}
+
+{% block 'titulo' %} Detalhes {% endblock %}
+    
+{% block 'container' %} 
+
+    <section id="container">
+
+        <div>
+
+            <div id="container-interno">
+
+                <h1> Detalhes </h1>
+
+                <div>
+                    {% if livro.foto %}
+                    <div id="foto-livro">
+                        <img src="{{ livro.foto.url }}">
+                    </div>
+                    {% endif %}
+
+                    <div id="container-detalhes">
+                        <div class="detalhes-categorias">
+                            <h2> Usuário: </h2>
+                            <p> {{ user }} </p>
+                        </div>
+
+                        <div class="detalhes-categorias">
+                            <h2> Nome: </h2>
+                            <p> {{ livro.nome_do_livro }} </p>
+                        </div>
+
+                        <div class="detalhes-categorias">
+                            <h2> Avaliação (1-5 estrelas): </h2>
+                            {% if livro.avaliacao == 1 %}
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </p>
+                            {% elif livro.avaliacao == 2 %}
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </p>
+                            {% elif livro.avaliacao == 3 %}
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </p>
+                            {% elif livro.avaliacao == 4 %}
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-regular fa-star"></i>
+                                </p>
+                            {% elif livro.avaliacao == 5 %}
+                                <p>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </p>
+                            {% else %}
+                                <p>
+                                    Em avaliação...
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        <div class="detalhes-categorias">
+                            <h2> Finalizado: </h2>
+                            {% if not livro.finalizado %}
+                                <i class="fa-solid fa-x"></i>
+                            {% else %}
+                                <i class="fa-solid fa-check"></i>
+                            {% endif %}
+                        </div>
+
+                        <div class="detalhes-categorias">
+                            <h2> Horário da Postagem: </h2>
+                            <p> {{ livro.data_criacao|date:'d/m/Y H:i:s' }} </p>
+                        </div>
+
+                        <div class="detalhes-categorias">
+                            <h2> Resenha: </h2>
+                            <p> {{ livro.resenha }}</p>
+                        </div>
+
+                        <a class="editar" href="{% url 'editar_livro' livro.id %}"> Editar </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}

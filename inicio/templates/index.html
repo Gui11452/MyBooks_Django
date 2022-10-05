@@ -1,0 +1,230 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inicio/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inicio/mediaqueries1.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inicio/mediaqueries2.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inicio/mediaqueries3.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/inicio/mediaqueries4.css' %}">
+        <link rel="icon" href="{% static 'Imagens/icon.png' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}">
+        <title> MyBooks </title>
+    </head>
+    <body>
+        
+        <i class="fa-solid fa-arrow-up"></i>
+        
+
+        <header class="cabecalho">
+            <div id="cabecalho-interno">
+
+                <div class="logo">
+                    <i class="fa-solid fa-book"></i>
+                    <a href="{% url 'inicio' %}"> MyBooks </a>
+                </div>
+
+                    <nav>
+                        <a href="#container2"> 
+                            Leitura 
+                            <span></span>
+                        </a>
+                    </nav>
+
+                {% if not user.is_authenticated %}
+                    <nav class="login">
+                        <a href="{% url 'login' %}"> 
+                            Login 
+                            <span></span>
+                        </a>
+                        <a href="{% url 'registrar' %}" class="registrar"> 
+                            Registrar-se 
+                            <span></span>
+                        </a>
+                    </nav>
+                {% else %}
+                    <nav class="login">
+                        <a href="{% url 'lista' %}"> 
+                            Bem vindo(a) {{ user }} 
+                        </a>
+                        <a href="{% url 'logout' %}" class="registrar"> 
+                            Desconectar
+                            <span></span>
+                        </a>
+                    </nav>
+
+                {% endif %}
+                
+                <div id="botao-interno">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+            </div>
+
+            <div class="cabecalho-oculto">
+
+                <div>
+
+                    {% if not user.is_authenticated %}
+                        <nav class="login">
+                            <a href="{% url 'login' %}"> 
+                                Login 
+                                <span></span>
+                            </a>
+                            <a href="{% url 'registrar' %}" class="registrar"> 
+                                Registrar-se 
+                                <span></span>
+                            </a>
+                        </nav>
+                    {% else %}
+                        <nav class="login">
+                            <a href="{% url 'lista' %}"> 
+                                Bem vindo(a) {{ user }} 
+                            </a>
+                            <a href="{% url 'logout' %}" class="registrar"> 
+                                Desconectar
+                                <span></span>
+                            </a>
+                        </nav>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+            
+        </header>
+
+        <section id="container1">
+            
+            <div id="conteudo-interno">
+
+                <div>
+                    <h1> 
+                        Leia para se libertar do mundo comum 
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </h1>
+                    <p> A leitura de um bom livro é um diálogo incessante: o livro fala e a alma responde. </p>
+                    <span></span>
+                    <p> 
+                        Leu um livro? Adicione-o a sua lista pessoal, com resenha e avaliações pessoais!
+                        <i class="fa-solid fa-bookmark"></i>
+                    </p>
+
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'registrar' %}"> 
+                            Registrar-se 
+                        </a>
+                    {% else %}
+                        <a href="{% url 'lista' %}"> 
+                            Acessar a sua Lista Pessoal
+                        </a>
+                    {% endif %}
+                </div>
+
+                <img src="{% static 'Imagens/3d_feminino.png' %}">
+
+            </div>
+
+        </section>
+
+        <section id="container2">
+
+            <div>
+                <h1> 
+                    Leitura 
+                    <i class="fa-solid fa-book"></i>
+                </h1>
+                <p> Quais os benefícios da leitura e porque você deveria registrar 
+                    as suas leituras em uma lista pessoal? 
+                </p>
+            </div>
+
+            <div>
+
+                <div class="container2-seções">
+                    <i class="fa-solid fa-palette"></i>
+                    <h2> Criatividade </h2>
+                    <p> Livros que narram fantasias, aventuras ou até mesmo romances levam você a outro 
+                        mundo. Apenas o ato de imaginar como é um personagem descrito estimula a 
+                        criatividade. Essa mesma habilidade pode ser incentivada com a leitura de 
+                        diversos gêneros literários.
+                    </p>
+                </div>
+
+                <div class="container2-seções">
+                    <i class="fa-solid fa-comment-dots"></i>
+                    <h2> Pensamento crítico </h2>
+                    <p> O pensamento crítico nada mais é do que ter a própria visão sobre um conjunto de 
+                        assuntos, sendo capaz de formular a própria opinião, questionar conceitos e 
+                        desenvolver os próprios argumentos. A leitura coloca você em contato com novos 
+                        conteúdos, o que ajuda a estimular essa habilidade. 
+                    </p>
+                </div>
+
+                <div class="container2-seções">
+                    <i class="fa-solid fa-pencil"></i>
+                    <h2> Capacidade de argumentação </h2>
+                    <p> Lembra que a leitura ajuda a aprimorar o pensamento crítico? Ao mesmo tempo, 
+                        ela ajuda a melhorar a capacidade de argumentação. Conforme você lê mais, é possível 
+                        criar padrões de organização das palavras em sua mente, pois se acostuma a ter 
+                        contato com frases bem-construídas. Desse modo, a leitura ajuda também a estruturar 
+                        melhor o seu pensamento e, assim, desenvolver argumentos mais sustentáveis, o que é 
+                        fundamental para a escrita e a apresentação de trabalhos acadêmicos. 
+                    </p>
+                </div>
+
+            </div>
+
+            <div>
+                <p> Imagina <span> inserir a leitura na sua rotina </span> e a cada livro lido, você registra 
+                    as  <span> críticas, avaliações e tempo de leitura </span> em uma lista pessoal, além de 
+                    apenas registrar que leu aquele livro. Quando você for <span> olhar a sua lista pessoal 
+                    depois de um ano, a alegriade ter lido todos aqueles livros vai ser enorme!  </span>
+                </p>
+            </div>
+
+        </section>
+        
+        <footer id="rodape">
+
+            <div>
+
+                <div>
+
+                    <div class="logo">
+                        <i class="fa-solid fa-book"></i>
+                        <a href="{% url 'inicio' %}"> MyBooks </a>
+                    </div>
+
+                    <p> 
+                        Site Desenvolvido em Django <br>
+                        Feito por Guilherme Gomes Andrade
+                    </p>
+
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'registrar' %}"> 
+                            Registrar-se 
+                        </a>
+                    {% else %}
+                        <a href="{% url 'lista' %}"> 
+                            Acessar a sua Lista Pessoal
+                        </a>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </footer>
+
+
+    <script src="{% static 'js/index/main.js' %}"></script>
+    </body>
+</html>

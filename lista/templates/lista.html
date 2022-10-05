@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% include 'parciais/_head.html' %}
+
+{% block 'estilos_css' %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lista/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lista/mediaqueries1.css' %}">
+{% endblock 'estilos_css' %}
+
+{% block 'titulo' %} Lista Pessoal - Livros {% endblock %}
+    
+{% block 'container' %} 
+
+    <section id="container">
+
+        <div>
+
+            <div id="container-interno">
+
+                <h1> 
+                    Lista Pessoal
+                    <i class="fa-solid fa-book-open"></i>
+                </h1>
+
+                <h2 class="usuario"> Bem vindo(a) {{ user }} </h2>
+
+                <div id="inserir-livro">
+                    <a class="novo" href="{% url 'novo_livro' %}"> Novo </a>
+                </div>
+
+                <div id="campo-pesquisa">
+                    {% csrf_token %}
+                    <form action="{% url 'busca' %}">
+                        <input type="text" name="termo" value="{{ request.GET.termo }}"
+                        placeholder="Nome do livro...">
+                    </form>
+                </div>
+
+                <div id="grid">
+
+                    <p class="categorias"> Nome </p>
+                    <p class="categorias"> Detalhes / Excluir </p>
+
+                    {% for livro in livros %}
+                        {% if objeto.x == 0 %}
+                            <p class="linha-par"> {{ livro.nome_do_livro }} </p>
+                            <div class="linha-par">
+                                <a href="{% url 'detalhes' livro.id %}" class="detalhes"> Detalhes </a>
+                                <a href="{% url 'excluir_livro_temporario' livro.id %}" class="excluir"> Excluir </a>
+                            </div>
+                            {{ objeto.incrementar }}
+                        {% elif objeto.x == 1 %}
+                            <p class="linha-impar"> {{ livro.nome_do_livro }} </p>
+                            <div class="linha-impar">
+                                <a href="{% url 'detalhes' livro.id %}" class="detalhes"> Detalhes </a>
+                                <a href="{% url 'excluir_livro_temporario' livro.id %}" class="excluir"> Excluir </a>
+                            </div>
+                            {{ objeto.decrementar }}
+                        {% endif %}
+                    {% endfor %}
+
+                </div>
+                
+                
+                    <div id="navegacao">
+                        {% for pagina in livros.paginator.page_range %}
+                            <a href="?p={{pagina}}&termo={{ request.GET.termo }}" class="naveg">
+                                <p> {{ pagina }} </p>
+                            </a>
+                        {% endfor %}
+                    </div>
+                
+
+            </div>
+
+        </div>
+
+    </section>
+        
+{% endblock %}

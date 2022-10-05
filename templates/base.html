@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        
+        {% include 'parciais/_head.html' %}
+
+        {% block 'estilos_css' %} {% endblock 'estilos_css' %}
+        
+        <title> {% block 'titulo' %} {% endblock %} </title>
+
+    </head>
+    <body>
+        
+        <header class="cabecalho">
+            <div id="cabecalho-interno">
+
+                <div class="logo">
+                    <i class="fa-solid fa-book"></i>
+                    <a href="{% url 'inicio' %}"> MyBooks </a>
+                </div>
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}" class="registrar"> 
+                        Desconectar
+                        <span></span>
+                    </a>
+                {% endif %}
+
+            </div>
+            
+        </header>
+
+        {% block 'container' %}
+
+            {% block 'alertas' %} {% endblock %}
+
+        {% endblock %}
+
+        <footer id="rodape">
+
+            <div>
+
+                <div>
+
+                    <div class="logo">
+                        <i class="fa-solid fa-book"></i>
+                        <a href="{% url 'inicio' %}"> MyBooks </a>
+                    </div>
+
+                    <p> 
+                        Site Desenvolvido em Django <br>
+                        Feito por Guilherme Gomes Andrade
+                    </p>
+
+                </div>
+
+            </div>
+
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% include 'parciais/_head.html' %}
+
+{% block 'estilos_css' %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/excluir_livro/style.css' %}">
+{% endblock 'estilos_css' %}
+
+{% block 'titulo' %} Excluir Livro {% endblock %}
+    
+{% block 'container' %} 
+
+    <div id="container">
+
+        <div>
+
+            <div id="container-interno">
+
+                <h1> {{ user }}, certeza que quer excluir
+                    o livro "<span>{{ livro.nome_do_livro }}</span>"?
+                </h1>
+
+                <div>
+                    <a class="sim" href="{% url 'excluir_livro' livro.id %}"> Sim </a>
+                    <a class="nao" href="{% url 'lista' %}"> Não </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
