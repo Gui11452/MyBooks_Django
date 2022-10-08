@@ -35,6 +35,7 @@ def lista(request):
     return render(request, 'lista.html', {
 		'livros': livros, 
         'objeto': objeto,
+        'numero_de_livros': len(list(livros))
 	})
 
 def detalhes(request, livro_id):
@@ -44,7 +45,7 @@ def detalhes(request, livro_id):
     livro = get_object_or_404(Livros, id=livro_id)
     
     return render(request, 'detalhes.html', {
-        'livro': livro
+        'livro': livro, 
     })
 
 def busca(request):
@@ -68,6 +69,7 @@ def busca(request):
     return render(request, 'lista.html', {
 		'livros': livros, 
         'objeto': objeto,
+        'numero_de_livros': len(list(livros))
 	})
 
 

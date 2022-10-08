@@ -38,6 +38,19 @@
 
     #inserir-livro{
         margin-bottom: 1.5rem;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    #inserir-livro p{
+        font-family: var(--fonte-subtitulo);
+    }
+
+    #inserir-livro p span{
+        font-weight: bold;
     }
 
     .detalhes, .excluir{

@@ -28,6 +28,11 @@
 
                 <div id="inserir-livro">
                     <a class="novo" href="{% url 'novo_livro' %}"> Novo </a>
+                    {% if numero_de_livros == 1 %}
+                        <p> <span>{{ numero_de_livros }}</span> livro encontrado! </p>
+                    {% else %}
+                        <p> <span>{{ numero_de_livros }}</span> livros encontrados! </p>
+                    {% endif %}
                 </div>
 
                 <div id="campo-pesquisa">

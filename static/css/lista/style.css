@@ -185,6 +185,18 @@ body{
 
     #inserir-livro{
         margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    #inserir-livro p{
+        font-family: var(--fonte-subtitulo);
+    }
+
+    #inserir-livro p span{
+        font-weight: bold;
     }
 
     .detalhes, .excluir{

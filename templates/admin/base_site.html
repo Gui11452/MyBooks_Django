@@ -1,0 +1,15 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+
+{% block branding %}
+    <i class="fa-solid fa-book"></i>
+    <a href="{% url 'inicio' %}"> MyBooks </a>
+ {% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admin/style.css' %}">
+    <link rel="icon" href="{% static 'Imagens/icon.png' %}">
+    <title> {% block title %} Área administrativa - MyBooks {% endblock %}</title>
+{% endblock %}
