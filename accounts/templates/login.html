@@ -46,7 +46,7 @@
                     <div>
                         <form action="{% url 'login' %}" method="POST">
                             {% csrf_token %}
-                            <label for="usuario"> Usuario </label>
+                            <label for="usuario"> Usuário </label>
                             <input type="text" name="usuario" id="usuario"
                             value="{{ request.POST.usuario }}">
 
@@ -54,8 +54,8 @@
                             <input type="password" name="senha" id="senha"><br>
 
                             <input id="botao" type="submit" value="Entrar">
-
                         </form>
+
                     </div>
                 </div>
 

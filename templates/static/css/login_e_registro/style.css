@@ -56,6 +56,16 @@ body{
 
 /* Alertas - Fim */
 
+a#esqueceu_senha{
+    text-decoration: underline;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+a#esqueceu_senha:hover{
+    transform: scale(1.05);
+}
+
 @media (min-width: 1270px){
 
     html{

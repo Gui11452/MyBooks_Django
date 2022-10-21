@@ -80,9 +80,14 @@ def registrar(request):
         messages.error(request, 'O E-mail informado já está sendo utilizado!')
         return render(request, 'registrar.html')
 
+    lista = nome_completo.split(' ')
+    first_name = lista[0]
+    del lista[0]
+    last_name = ' '.join(lista) 
+
     messages.success(request, 'Registrado com sucesso!')
     user = User.objects.create_user(username=usuario, email=email, 
-                    password=senha1, first_name=nome_completo)
+                    password=senha1, first_name=first_name, last_name=last_name)
     user.save()
 
     return redirect('login')
