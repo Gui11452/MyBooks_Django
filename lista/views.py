@@ -43,7 +43,12 @@ def detalhes(request, livro_id):
         return redirect('inicio')
 
     livro = get_object_or_404(Livros, id=livro_id)
+
+    usuario = str(livro.usuario)
     
+    if request.user.username != usuario:
+        return redirect('inicio')
+
     return render(request, 'detalhes.html', {
         'livro': livro, 
     })

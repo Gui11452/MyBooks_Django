@@ -18,6 +18,7 @@ html, body{
 
 body{
     height: 100vh;
+    background: url('Imagens/fundo1.jpg') !important;
 }
 
 :root{

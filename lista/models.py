@@ -15,6 +15,10 @@ class Livros(models.Model):
 
     foto = models.ImageField(blank=True, null=True, upload_to='fotos/%Y/%m/%d', verbose_name="Foto")
 
+    class Meta:
+        verbose_name = 'Livro'
+        verbose_name_plural = 'Livros'
+
     def __str__(self):
         return self.nome_do_livro
 
